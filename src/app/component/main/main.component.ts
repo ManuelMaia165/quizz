@@ -24,5 +24,8 @@ export class MainComponent implements OnInit {
       })
       .catch(error => alert(error));
   }
+  onJogar(){
+    this.router.navigate(['/jogo']);
+  }
 
 }

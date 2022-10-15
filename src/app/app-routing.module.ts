@@ -1,3 +1,4 @@
+import { JogoComponent } from './component/jogo/jogo.component';
 import { NgModule } from '@angular/core';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,7 +16,8 @@ const routes: Routes = [
     component: MainComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/register']))},
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'jogo', component: JogoComponent}
 ];
 
 @NgModule({
