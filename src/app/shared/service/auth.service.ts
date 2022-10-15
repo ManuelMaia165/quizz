@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -7,36 +7,17 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private fireauth: AngularFireAuth, private router : Router){ }
+  constructor(private auth: Auth){ }
 
-  // login
-  login(email: string, password : string){
-    this.fireauth.signInWithEmailAndPassword(email,password).then( () => {
-      localStorage.setItem('token','true');
-      this.router.navigate(['dashboard']);
-    }, err => {
-      alert('Algo está errado');
-      this.router.navigate(['/login']);
-    });
+  register({email, password}: any){
+    return createUserWithEmailAndPassword(this.auth, email, password);
   }
-    // cadastro
-    register(email: string, password : string){
-      this.fireauth.createUserWithEmailAndPassword(email, password).then( () => {
-        alert('Cadastrado com sucesso!');
-        this.router.navigate(['/login']);
-      }, err => {
-        alert(err.message);
-        this.router.navigate(['/register']);
-      });
-    }
+  login({email, password}: any){
+    return signInWithEmailAndPassword(this.auth, email, password);
+  }
+  logout() {
+    return signOut(this.auth);
+  }
 
-    // deslogar
-    logout(){
-      this.fireauth.signOut().then( () => {
-        localStorage.removeItem('token');
-        this.router.navigate(['/login']);
-      }, err => {
-        alert(err.message);
-      });
-    }
+
 }
