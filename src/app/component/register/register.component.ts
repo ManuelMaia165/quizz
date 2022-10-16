@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
       .catch(error => alert(error));
 
   }
+
   onLogin(){
     this.router.navigate(['/login'])
   }
