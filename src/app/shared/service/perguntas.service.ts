@@ -1,7 +1,6 @@
-import { Pergunta } from './../model/pergunta';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { Questao } from '../model/questao';
 
 
 @Injectable({
@@ -9,15 +8,11 @@ import { tap } from 'rxjs/operators';
 })
 export class PerguntasService {
 
-  private readonly API = '/src/assets/cursos.json';
+  private readonly API = 'http://localhost:8080/api/jogo';
 
-  constructor(private HttpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient) { }
 
-  list() {
-    return this.HttpClient.get<Pergunta[]>(this.API)
-    .pipe(
-      tap(perguntas => console.log(perguntas))
-    );
-
+  pergunta() {
+    return this.httpClient.get<Questao>(this.API + "/questao");
   }
 }

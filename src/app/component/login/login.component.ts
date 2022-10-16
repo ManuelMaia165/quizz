@@ -18,13 +18,12 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.formLogin = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl()
+      email    : new FormControl(),
+      password : new FormControl()
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
   onSubmit() {
     this.authService.login(this.formLogin.value)
@@ -34,6 +33,7 @@ export class LoginComponent implements OnInit {
       })
       .catch(error => alert(error));
   }
+
   onRegister(){
     this.router.navigate(['/register'])
   }

@@ -9,21 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './component/login/login.component';
-import { MainComponent } from './component/main/main.component';
-import { RegisterComponent } from './component/register/register.component';
 
-
-
+import { ComponentModule } from './component/component.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MainComponent,
-    RegisterComponent,
-    LoginComponent
-
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +25,9 @@ import { RegisterComponent } from './component/register/register.component';
     provideAuth(() => getAuth()),
     ReactiveFormsModule,
     HttpClientModule,
-
+    ComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {  }

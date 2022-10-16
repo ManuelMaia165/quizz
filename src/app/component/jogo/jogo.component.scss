@@ -1,0 +1,8 @@
+#formatButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 85%;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  margin: 15px;
+}

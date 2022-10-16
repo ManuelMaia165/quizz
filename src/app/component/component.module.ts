@@ -1,12 +1,17 @@
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AppMaterialModule } from '../shared/app-material/app-material.module';
 
 import { ComponentRoutingModule } from './component-routing.module';
 import { JogoComponent } from './jogo/jogo.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -19,8 +24,12 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     CommonModule,
     ComponentRoutingModule,
-    AppMaterialModule
-
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatListModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class ComponentModule { }

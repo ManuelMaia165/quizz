@@ -1,5 +1,5 @@
 export interface Resposta {
-    id: number;
-    descricao: string;
-    tema: string;
+  id        : number;
+  descricao : string;
+  tema      : string;
 }

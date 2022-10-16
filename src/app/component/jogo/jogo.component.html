@@ -1,16 +1,10 @@
 <div class="centro">
   <mat-card class="card">
-  <mat-card-content>
-    <mat-list role="list">
-      <mat-list-item *ngFor='let pergunta of perguntas | async'>
-        {{pergunta.descricao}} </mat-list-item>
-    </mat-list>
-  </mat-card-content>
+  <mat-card-title style="text-align: center;">
+    {{questao.pergunta.descricao}}
+  </mat-card-title>
   </mat-card>
   </div>
-  <div class="button">
-    <button mat-raised-button color="primary">1</button>
-    <button mat-raised-button color="primary">2</button>
-    <button mat-raised-button color="primary">3</button>
-    <button mat-raised-button color="primary">4</button>
+  <div id="formatButtons">
+    <button *ngFor="let alternativas of questao.respostas" mat-raised-button color="primary">{{alternativas.descricao}}</button>
   </div>

@@ -1,7 +1,6 @@
 import { PerguntasService } from './../../shared/service/perguntas.service';
-import { Pergunta } from './../../shared/model/pergunta';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Questao } from '../../shared/model/questao';
 
 @Component({
   selector: 'app-jogo',
@@ -10,13 +9,21 @@ import { Observable } from 'rxjs';
 })
 export class JogoComponent implements OnInit {
 
-  perguntas: Observable<Pergunta[]>;
+  questao!: Questao;
 
-  constructor(private perguntaService : PerguntasService ) {
-      this.perguntas = this.perguntaService.list();
-  }
+  constructor(private perguntaService : PerguntasService ) {  }
 
   ngOnInit(): void {
+
+    this.perguntaService.pergunta().subscribe(response => {
+      if(response) {
+        this.questao = response;
+      }
+    }, error => {
+      console.log(error)
+    });
+
+    console.log(this.questao)
   }
 
 }
