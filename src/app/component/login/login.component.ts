@@ -21,9 +21,11 @@ export class LoginComponent implements OnInit {
       email    : new FormControl(),
       password : new FormControl()
     })
+    this.authService.logout();
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(
+  ): void {  }
 
   onSubmit() {
     this.authService.login(this.formLogin.value)

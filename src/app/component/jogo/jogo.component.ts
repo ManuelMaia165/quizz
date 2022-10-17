@@ -31,6 +31,7 @@ export class JogoComponent implements OnInit {
   onResposta(resposta: Resposta): void {
     this.perguntaService.resposta(this.questao.pergunta, resposta).subscribe(response => {
       this.resultado = response;
+      alert(this.resultado)
     }, error => {
       console.log(error)
     });
