@@ -1,10 +1,13 @@
-<div class="centro">
-  <mat-card class="card">
+<mat-card class="card">
   <mat-card-title style="text-align: center;">
     {{questao.pergunta.descricao}}
   </mat-card-title>
-  </mat-card>
-  </div>
-  <div id="formatButtons">
-    <button *ngFor="let alternativas of questao.respostas" mat-raised-button color="primary">{{alternativas.descricao}}</button>
-  </div>
+</mat-card>
+<div *ngIf="resultado != null">
+  {{resultado ? 'ACERTOU' : 'ERROU'}}
+</div>
+<div id="formatButtons">
+  <button *ngFor="let alternativa of questao.respostas" mat-raised-button color="primary" (click)="onResposta(alternativa)">
+    {{alternativa.descricao}}
+  </button>
+</div>

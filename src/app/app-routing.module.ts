@@ -17,7 +17,8 @@ const routes: Routes = [
     ...canActivate(() => redirectUnauthorizedTo(['/login']))},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'jogo', component: JogoComponent}
+  { path: 'jogo', component: JogoComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))}
 ];
 
 @NgModule({

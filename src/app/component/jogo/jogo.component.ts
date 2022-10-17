@@ -1,6 +1,7 @@
 import { PerguntasService } from './../../shared/service/perguntas.service';
 import { Component, OnInit } from '@angular/core';
 import { Questao } from '../../shared/model/questao';
+import { Resposta } from '../../shared/model/resposta';
 
 @Component({
   selector: 'app-jogo',
@@ -10,6 +11,7 @@ import { Questao } from '../../shared/model/questao';
 export class JogoComponent implements OnInit {
 
   questao!: Questao;
+  resultado?: Boolean;
 
   constructor(private perguntaService : PerguntasService ) {  }
 
@@ -24,6 +26,14 @@ export class JogoComponent implements OnInit {
     });
 
     console.log(this.questao)
+  }
+
+  onResposta(resposta: Resposta): void {
+    this.perguntaService.resposta(this.questao.pergunta, resposta).subscribe(response => {
+      this.resultado = response;
+    }, error => {
+      console.log(error)
+    });
   }
 
 }
