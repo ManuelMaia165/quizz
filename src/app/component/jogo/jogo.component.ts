@@ -5,6 +5,8 @@ import { Resposta } from '../../shared/model/resposta';
 import { getAuth, Auth } from '@angular/fire/auth';
 import { ResponseDTO } from 'src/app/shared/model/dto/responde-dto';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Pergunta } from 'src/app/shared/model/pergunta';
 
 @Component({
   selector: 'app-jogo',
@@ -13,19 +15,14 @@ import { Router } from '@angular/router';
 })
 export class JogoComponent implements OnInit {
 
-  questao!: Questao;
+  questao$: Observable<Questao>;
   resultado?: ResponseDTO;
   auth: Auth;
   email = "";
 
   constructor(private perguntaService : PerguntasService, private router: Router) {
-    this.perguntaService.pergunta().subscribe(response => {
-      if(response) {
-        this.questao = response;
-      }
-    }, error => {
-      console.log(error);
-    });
+
+    this.questao$ = this.perguntaService.pergunta();
     this.auth = getAuth();
   }
 
@@ -34,16 +31,14 @@ export class JogoComponent implements OnInit {
     this.email += this.auth.currentUser?.email;
   }
 
-  onResposta(resposta: Resposta): void {
-    this.perguntaService.resposta(this.questao.pergunta, resposta, this.email).subscribe(response => {
+  onResposta(pergunta: Pergunta, resposta: Resposta): void {
+    this.perguntaService.resposta(pergunta, resposta, this.email).subscribe(response => {
       if(response) {
         this.resultado = response;
       }
     }, error => {
       console.log(error)
     });
-
-    this.router.navigate(["/result", this.resultado])
   }
 
 }
