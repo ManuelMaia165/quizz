@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { MainComponent } from './component/main/main.component';
 import { RegisterComponent } from './component/register/register.component';
+import { ResultComponent } from './component/result/result.component';
 
 
 
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'jogo', component: JogoComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))},
+  { path: 'result/:result', component: ResultComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/login']))}
 ];
 

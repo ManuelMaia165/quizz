@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Questao } from '../model/questao';
 import { Pergunta } from '../model/pergunta';
 import { Resposta } from '../model/resposta';
+import { ResponseDTO } from '../model/dto/responde-dto';
 
 
 @Injectable({
@@ -10,17 +11,17 @@ import { Resposta } from '../model/resposta';
 })
 export class PerguntasService {
 
-  private readonly API           = 'http://localhost:8080/api/jogo';
+  private readonly API           = 'http://localhost:8081/api/jogo';
   private readonly GET_QUESTION  = '/questao';
   private readonly POST_RESPONSE = '/respostaUser';
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient) {  }
 
   pergunta() {
     return this.httpClient.get<Questao>(this.API + this.GET_QUESTION);
   }
 
-  resposta(pergunta: Pergunta, resposta: Resposta) {
-    return this.httpClient.post<boolean>(this.API + this.POST_RESPONSE, {pergunta, resposta});
+  resposta(pergunta: Pergunta, resposta: Resposta, username: string) {
+    return this.httpClient.post<ResponseDTO>(this.API + this.POST_RESPONSE, {pergunta, resposta, username});
   }
 }

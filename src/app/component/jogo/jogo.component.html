@@ -4,7 +4,7 @@
   </mat-card-title>
 </mat-card>
 <div *ngIf="resultado != null">
-  {{resultado ? 'ACERTOU' : 'ERROU'}}
+  {{resultado.result}}
 </div>
 <div id="formatButtons">
   <button *ngFor="let alternativa of questao.respostas" mat-raised-button color="primary" (click)="onResposta(alternativa)">

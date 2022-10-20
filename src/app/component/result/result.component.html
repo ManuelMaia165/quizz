@@ -1,1 +1,7 @@
-<p>result works!</p>
+<div *ngIf="result != null && result == 'ACERTOU'" style="background-color: green; color: white;">
+  {{result}}
+</div>
+
+<div *ngIf="result != null && result == 'ERROU'" style="background-color: red; color: white;">
+  {{result}}
+</div>
