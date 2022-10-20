@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private autenticado : boolean = false;
+  mostrarLogout = new EventEmitter<boolean>();
+  constructor(private auth: Auth){
 
-  constructor(private auth: Auth){ }
-
+  }
   register({email, password}: any){
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
@@ -17,6 +19,8 @@ export class AuthService {
   logout() {
     return signOut(this.auth);
   }
+
+
 
 
 }

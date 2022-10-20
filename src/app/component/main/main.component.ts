@@ -8,13 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+
   ) {  }
 
-  ngOnInit(): void {  }
+  ngOnInit(
+  ): void {
+    console.log()
+   }
 
   onClick() {
     this.authService.logout().then(() => {

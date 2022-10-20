@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { ComponentModule } from './component/component.module';
 
 
@@ -25,7 +25,8 @@ import { ComponentModule } from './component/component.module';
     provideAuth(() => getAuth()),
     ReactiveFormsModule,
     HttpClientModule,
-    ComponentModule
+    ComponentModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

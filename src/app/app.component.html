@@ -1,5 +1,12 @@
 <html>
   <body>
+    <p>
+      <mat-toolbar class="toolbar" color="primary">
+        <span>Quizz</span>
+        <button *ngIf="mostrarMenu" ()> </button>
+        <button *ngIf="mostrarMenu" (click) ="onLogout()" class="btn btn-outline-danger mt-5">Sair</button>
+      </mat-toolbar>
+    </p>
     <router-outlet></router-outlet>
   </body>
 </html>
