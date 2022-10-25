@@ -21,7 +21,6 @@ export class JogoComponent implements OnInit {
   email = "";
 
   constructor(private perguntaService : PerguntasService, private router: Router) {
-
     this.questao$ = this.perguntaService.pergunta();
     this.auth = getAuth();
   }
@@ -32,13 +31,8 @@ export class JogoComponent implements OnInit {
   }
 
   onResposta(pergunta: Pergunta, resposta: Resposta): void {
-    this.perguntaService.resposta(pergunta, resposta, this.email).subscribe(response => {
-      if(response) {
-        this.resultado = response;
-      }
-    }, error => {
-      console.log(error)
-    });
+    this.perguntaService.resposta(pergunta, resposta, this.email).subscribe();
+    this.router.navigate(['/result']);
   }
 
 }

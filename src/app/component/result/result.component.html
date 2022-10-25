@@ -1,7 +1,10 @@
-<div *ngIf="result != null && result == 'ACERTOU'" style="background-color: green; color: white;">
-  {{result}}
+<div>
+  <ol>
+    <li *ngFor="let resultado of result">
+      {{resultado.resultado? "ACERTOU" : "ERROU"}}
+    </li>
+  </ol>
 </div>
-
-<div *ngIf="result != null && result == 'ERROU'" style="background-color: red; color: white;">
-  {{result}}
-</div>
+<button mat-raised-button color="primary" (click)="jogarNovamente()">
+  Jogar novamente
+</button>

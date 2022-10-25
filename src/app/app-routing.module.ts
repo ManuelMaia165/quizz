@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'jogo', component: JogoComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/login']))},
-  { path: 'result/:result', component: ResultComponent,
+  { path: 'result', component: ResultComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/login']))}
 ];
 

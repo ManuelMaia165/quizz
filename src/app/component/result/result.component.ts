@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { Auth, getAuth } from '@angular/fire/auth';
+import { RespostaDTO } from '../../shared/model/dto/resposta-dto';
+import { PerguntasService } from 'src/app/shared/service/perguntas.service';
 
 @Component({
   selector: 'app-result',
@@ -8,14 +11,30 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResultComponent implements OnInit {
 
-  result?: string
+  result?: RespostaDTO[];
+  email = "";
+  auth: Auth;
 
-  constructor(private router: ActivatedRoute) {  }
+  constructor(private router: Router, private service: PerguntasService) {
+    this.auth = getAuth();
+  }
 
   ngOnInit(): void {
-    this.router.params.subscribe(params => {
-      this.result = params['result']
-    });
+    this.email += this.auth.currentUser?.email;
+
+    this.service.consultarRespostas(this.email).subscribe(
+      response => {
+        if(response) {
+          this.result = response;
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  jogarNovamente() {
+    this.router.navigate(['/jogo'])
   }
 
 }
