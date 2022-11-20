@@ -1,0 +1,47 @@
+<div class="createSala">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Criar Sala</mat-card-title>
+      <mat-card-subtitle>Opções</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <mat-label>
+          Máx. Players
+        </mat-label>
+        <mat-select [(ngModel)]="quantValue">
+          <mat-option *ngFor="let quant of quantPlayers" [value]="quant">
+            {{ quant }}
+          </mat-option>
+        </mat-select>
+      </p>
+      <p>
+        <mat-label>
+          Tema
+        </mat-label>
+        <mat-select [(ngModel)]="temaValue">
+          <mat-option *ngFor="let tema of temas" [value]="tema.value">
+            {{ tema.label }}
+          </mat-option>
+        </mat-select>
+      </p>
+      <p>
+        <mat-label>
+          Tempo de perguntas
+        </mat-label>
+        <mat-select [(ngModel)]="tempoValue">
+          <mat-option *ngFor="let time of tempoPartida" [value]="time">
+            {{ time }}
+          </mat-option>
+        </mat-select>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button (click)="printValues()">
+        <mat-icon>
+          save
+        </mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
