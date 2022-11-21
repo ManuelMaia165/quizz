@@ -26,7 +26,6 @@ export class JogoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.auth.currentUser?.email);
     this.email += this.auth.currentUser?.email;
   }
 

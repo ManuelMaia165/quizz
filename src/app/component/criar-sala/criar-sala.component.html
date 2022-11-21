@@ -1,5 +1,5 @@
-<div class="createSala">
-  <mat-card class="example-card">
+<div class="container">
+  <mat-card class="shadow p-3 mb-5 bg-body rounded mat-elevation-z12">
     <mat-card-header>
       <mat-card-title>Criar Sala</mat-card-title>
       <mat-card-subtitle>Opções</mat-card-subtitle>
@@ -9,7 +9,7 @@
         <mat-label>
           Máx. Players
         </mat-label>
-        <mat-select [(ngModel)]="quantValue">
+        <mat-select [(ngModel)]="quantValue" class="pg-dark">
           <mat-option *ngFor="let quant of quantPlayers" [value]="quant">
             {{ quant }}
           </mat-option>
@@ -36,9 +36,9 @@
         </mat-select>
       </p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="d-flex justify-content-md-end">
       <button mat-icon-button (click)="printValues()">
-        <mat-icon>
+        <mat-icon style="color: green;">
           save
         </mat-icon>
       </button>

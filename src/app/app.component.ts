@@ -19,12 +19,16 @@ export class AppComponent {
     this.authService.mostrarLogout.subscribe(
       mostrar => this.mostrarMenu = mostrar
     );
-    
   }
+
   onLogout() {
     this.authService.logout().then(() => {
       this.router.navigate(['/login']);
     })
     .catch(error => alert(error));
+  }
+
+  onPerfil() {
+    this.router.navigate(['/perfil'])
   }
 }

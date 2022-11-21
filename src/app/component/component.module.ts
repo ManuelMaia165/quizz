@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { ComponentRoutingModule } from './component-routing.module';
 import { JogoComponent } from './jogo/jogo.component';
@@ -16,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ResultComponent } from './result/result.component';
 import { CriarSalaComponent } from './criar-sala/criar-sala.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { CriarSalaComponent } from './criar-sala/criar-sala.component';
     MainComponent,
     JogoComponent,
     ResultComponent,
-    CriarSalaComponent
+    CriarSalaComponent,
+    PerfilComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { CriarSalaComponent } from './criar-sala/criar-sala.component';
     MatButtonModule,
     MatSelectModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule
   ]
 })
 export class ComponentModule { }

@@ -8,6 +8,7 @@ import { MainComponent } from './component/main/main.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ResultComponent } from './component/result/result.component';
 import { CriarSalaComponent } from './component/criar-sala/criar-sala.component';
+import { PerfilComponent } from './component/perfil/perfil.component';
 
 
 
@@ -24,7 +25,9 @@ const routes: Routes = [
   { path: 'result', component: ResultComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/login']))},
   { path: 'criarSala', component: CriarSalaComponent,
-    ...canActivate(() => redirectUnauthorizedTo(['/login']))}
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))},
+  { path: 'perfil', component: PerfilComponent,
+  ...canActivate(() => redirectUnauthorizedTo(['/login']))}
 ];
 
 @NgModule({

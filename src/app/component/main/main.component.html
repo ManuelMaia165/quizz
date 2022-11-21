@@ -1,15 +1,50 @@
-<div class="container">
+<div>
   <div class="jumbotron">
-    <h1>
-      <span class="peg r">Q</span>
-      <span class="peg g">U</span>
-      <span class="peg y">I</span>
-      <span class="peg g">Z</span>
-      <span class="peg r">Z</span>
-    </h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris enim enim, molestie ac tellus non, hendrerit interdum eros. Duis blandit sodales risus ut consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget libero blandit, congue mauris non, auctor dolor. Praesent sed pharetra nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut luctus quam eu maximus aliquet.</p>
-    <button (click)="onJogar()" mat-raised-button color="primary">Jogar</button>
+    <div class="container">
+      <h1>
+        <span class="peg r">Q</span>
+        <span class="peg g">U</span>
+        <span class="peg y">I</span>
+        <span class="peg g">Z</span>
+        <span class="peg r">Z</span>
+      </h1>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris enim enim, molestie ac tellus non, hendrerit interdum eros. Duis blandit sodales risus ut consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget libero blandit, congue mauris non, auctor dolor. Praesent sed pharetra nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut luctus quam eu maximus aliquet.</p>
+      <button (click)="onJogar()" mat-raised-button color="primary">Jogar</button>
+      <button (click)="onCriarSala()" mat-raised-button color="primary">Criar Sala</button>
+    </div>
   </div>
+  <div class="coment">
+    <p class="flex">
+      <mat-form-field>
+        <mat-label>
+          Comentário
+        </mat-label>
+        <textarea matInput placeholder="Inserir comentário" [(ngModel)]="mensagem"></textarea>
+      </mat-form-field>
+      <button mat-icon-button (click)="sendComentario()" type="submit">
+        <mat-icon>send</mat-icon>
+      </button>
+    </p>
+    <br>
+  </div>
+
+  <mat-card class="mat-elevation-z12" *ngFor="let comentario of comentarios">
+    <mat-card-title class="d-flex justify-content-md-center">
+      Comentário - {{ comentario.id }}
+    </mat-card-title>
+    <mat-card-content class="d-flex justify-content-md-center">
+      {{ comentario.mensagem }}
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-md-center">
+      <button class="mx-5" mat-icon-button (click)="likeDeslikeComentario(comentario.id, comentario.like + 1, comentario.deslike < 1 ? comentario.deslike : comentario.deslike - 1)">
+        <mat-icon [matBadge]="comentario.like"    [matBadgeHidden]="comentario.like < 1"    matBadgeColor="warn">thumb_up</mat-icon>
+      </button>
+      <button class="mx-5" mat-icon-button (click)="likeDeslikeComentario(comentario.id, comentario.like < 1 ? comentario.like : comentario.like - 1, comentario.deslike + 1)">
+        <mat-icon [matBadge]="comentario.deslike" [matBadgeHidden]="comentario.deslike < 1" matBadgeColor="warn">thumb_down</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
   <div class="footer">
     <p>&copy; Roosevelt e Manuel</p>
   </div>

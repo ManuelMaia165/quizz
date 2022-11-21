@@ -1,0 +1,65 @@
+<div class="container-fluid d-flex justify-content-md-center" *ngIf="perfilExist">
+  <mat-card class="example-card" *ngFor="let userPerfil of perfil">
+    <mat-card-header>
+      <mat-icon  mat-card-avatar>person</mat-icon>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title> {{ userPerfil.apelido }} </mat-card-title>
+      <mat-card-subtitle> {{ userPerfil.email }} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ userPerfil.bio }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-card class="mat-elevation-z12" *ngFor="let comentario of comentarios">
+        <mat-card-title class="d-flex justify-content-md-center">
+          Comentário - {{ comentario.id }}
+        </mat-card-title>
+        <mat-card-content class="d-flex justify-content-md-center">
+          {{ comentario.mensagem }}
+        </mat-card-content>
+        <mat-card-actions class="d-flex justify-content-md-center">
+          <button class="mx-5" mat-icon-button (click)="likeDeslikeComentario(comentario.id, comentario.like + 1, comentario.deslike < 1 ? comentario.deslike : comentario.deslike - 1)">
+            <mat-icon [matBadge]="comentario.like"    [matBadgeHidden]="comentario.like < 1"    matBadgeColor="warn">thumb_up</mat-icon>
+          </button>
+          <button class="mx-5" mat-icon-button (click)="likeDeslikeComentario(comentario.id, comentario.like < 1 ? comentario.like : comentario.like - 1, comentario.deslike + 1)">
+            <mat-icon [matBadge]="comentario.deslike" [matBadgeHidden]="comentario.deslike < 1" matBadgeColor="warn">thumb_down</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+<div class="container-fluid d-flex justify-content-md-center" *ngIf="!perfilExist">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Criar Perfil</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <mat-form-field>
+          <mat-label>
+            Apelido
+          </mat-label>
+          <input matInput type="text" required [(ngModel)]="apelido" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>
+            Bio
+          </mat-label>
+          <textarea matInput [(ngModel)]="bio" placeholder="Fale um pouco sobre você"></textarea>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-md-end">
+      <button mat-icon-button (click)="criarPerfil()">
+        <mat-icon style="color: green;">save</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
