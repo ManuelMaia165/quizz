@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { AuthService } from './shared/service/auth.service';
-import { getAuth } from "firebase/auth";
 
 
 @Component({
@@ -13,7 +12,6 @@ export class AppComponent {
   title = 'quizz';
 
   mostrarMenu : boolean = false;
-
 
   constructor(private authService: AuthService, private router : Router){
     this.authService.mostrarLogout.subscribe(
@@ -30,5 +28,9 @@ export class AppComponent {
 
   onPerfil() {
     this.router.navigate(['/perfil'])
+  }
+
+  onRanking() {
+    this.router.navigate(['/ranking'])
   }
 }

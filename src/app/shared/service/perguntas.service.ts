@@ -19,6 +19,7 @@ export class PerguntasService {
   private readonly POST_PERFIL      = '/criarPerfil';
   private readonly GET_EXIST_PERFIL = '/perfilExist';
   private readonly POST_PERFIL_USER = '/buscarPerfil';
+  private readonly PUT_PERFIL       = '/editarPerfil';
 
   constructor(private httpClient : HttpClient) {  }
 
@@ -55,5 +56,15 @@ export class PerguntasService {
     return this.httpClient.post<Perfil[]>(this.API_JOGO + this.POST_PERFIL_USER,
       { email }
     );
+  }
+
+  editarPerfil(id: number, apelido: string, bio: string) {
+    return this.httpClient.put<Perfil>(this.API_JOGO + this.PUT_PERFIL,
+      {
+        "id": id,
+        "apelido": apelido,
+        "bio": bio
+      }
+    )
   }
 }

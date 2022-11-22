@@ -9,14 +9,15 @@ import { RegisterComponent } from './component/register/register.component';
 import { ResultComponent } from './component/result/result.component';
 import { CriarSalaComponent } from './component/criar-sala/criar-sala.component';
 import { PerfilComponent } from './component/perfil/perfil.component';
+import { ListarSalasComponent } from './component/listar-salas/listar-salas.component';
+import { RankingComponent } from './component/ranking/ranking.component';
 
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/main' },
   {
-    path: 'main',
-    component: MainComponent,
+    path: 'main', component: MainComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/login']))},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -27,6 +28,10 @@ const routes: Routes = [
   { path: 'criarSala', component: CriarSalaComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/login']))},
   { path: 'perfil', component: PerfilComponent,
+  ...canActivate(() => redirectUnauthorizedTo(['/login']))},
+  { path: 'listarSala', component: ListarSalasComponent,
+  ...canActivate(() => redirectUnauthorizedTo(['/login']))},
+  { path: 'ranking', component: RankingComponent,
   ...canActivate(() => redirectUnauthorizedTo(['/login']))}
 ];
 

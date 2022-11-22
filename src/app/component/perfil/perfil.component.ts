@@ -16,6 +16,7 @@ export class PerfilComponent implements OnInit {
   auth: Auth;
   email       = "";
   perfilExist = false;
+  enabledButton = true;
 
   apelido     = "";
   bio         = "";
@@ -72,6 +73,16 @@ export class PerfilComponent implements OnInit {
     this.apiComentario.put_comentario_like_or_deslike(id, like, deslike).subscribe();
 
     window.location.reload();
+  }
+
+  editarPerfil(id: number) {
+    this.apiPergunta.editarPerfil(id, this.apelido, this.bio).subscribe();
+
+    window.location.reload();
+  }
+
+  validCamps() {
+    this.enabledButton = this.apelido && this.bio ? false : true;
   }
 
 }

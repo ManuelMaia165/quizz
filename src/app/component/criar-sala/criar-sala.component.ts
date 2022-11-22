@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { getAuth } from 'firebase/auth';
+import { SalaService } from '../../shared/service/sala.service';
+import { Router } from '@angular/router';
 
 interface Tema {
   label: string;
@@ -29,7 +31,7 @@ export class CriarSalaComponent implements OnInit {
   quantValue = 0;
   tempoValue = 0;
 
-  constructor() {
+  constructor(private apiSala: SalaService, private router: Router) {
     this.auth = getAuth()
   }
 
@@ -37,10 +39,17 @@ export class CriarSalaComponent implements OnInit {
     this.user += this.auth.currentUser?.email;
   }
 
-  printValues() {
-    console.log(this.temaValue);
-    console.log(this.quantValue);
-    console.log(this.tempoValue);
+  createSala() {
+    this.apiSala.createSala(this.temaValue, this.quantValue, this.tempoValue, this.user).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    this.router.navigate(['listarSala']);
   }
 
 }

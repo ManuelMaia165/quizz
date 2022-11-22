@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 import { ComponentRoutingModule } from './component-routing.module';
 import { JogoComponent } from './jogo/jogo.component';
@@ -18,6 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ResultComponent } from './result/result.component';
 import { CriarSalaComponent } from './criar-sala/criar-sala.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { ListarSalasComponent } from './listar-salas/listar-salas.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 
 @NgModule({
@@ -28,7 +32,9 @@ import { PerfilComponent } from './perfil/perfil.component';
     JogoComponent,
     ResultComponent,
     CriarSalaComponent,
-    PerfilComponent
+    PerfilComponent,
+    ListarSalasComponent,
+    RankingComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +48,9 @@ import { PerfilComponent } from './perfil/perfil.component';
     MatSelectModule,
     FormsModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule,
+    MatTableModule
   ]
 })
 export class ComponentModule { }
